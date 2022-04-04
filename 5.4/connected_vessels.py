@@ -9,12 +9,14 @@ def generator_interleave(*iterables: Iterable) -> Any:
     :return: Elements in each iterable in the order they should be if we interleave them.
     """
     iterators = list(map(lambda iterable: iter(iterable), iterables))
-    while len(iterators):
+    counter_finish = 0
+    while counter_finish != len(iterators):
+        counter_finish = 0
         for it in iterators:
             try:
                 yield next(it)
             except StopIteration:
-                iterators.remove(it)
+                counter_finish += 1
 
 
 def interleave(*iterables: Iterable) -> list:

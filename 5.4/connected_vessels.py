@@ -1,5 +1,5 @@
-from typing import Any, Iterable
 from itertools import chain, zip_longest
+from typing import Any, Iterable
 
 
 def generator_interleave(*iterables: Iterable) -> Any:

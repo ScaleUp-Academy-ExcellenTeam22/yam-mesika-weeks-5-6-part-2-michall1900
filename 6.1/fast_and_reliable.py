@@ -1,7 +1,7 @@
 from collections.abc import Callable
 from functools import partial
 from time import time
-from typing import Any
+from typing import Any, Iterable
 
 
 def average_runtime(*function_parameters: Any, number_of_runs: int, function: Callable[[Any], Any]) -> float:
@@ -21,14 +21,14 @@ def average_runtime(*function_parameters: Any, number_of_runs: int, function: Ca
     return sum_time if number_of_runs > 0 else -1
 
 
-def is_inside_object(item: Any, an_object: Any) -> bool:
+def is_inside_iterable(item: Any, iterable: Iterable[Any]) -> bool:
     """
-    Check if an item appeared inside an object.
-    :param item: Any item that could appear inside the object.
-    :param an_object: Any kind of an object.
+    Check if an item appeared inside an iterable.
+    :param item: Any item that could appear inside the iterable.
+    :param iterable: Any kind of an iterable.
     :return: True if it is, otherwise, false.
     """
-    if item in an_object:
+    if item in iterable:
         return True
     return False
 
@@ -43,7 +43,7 @@ def main_fast_and_reliable() -> None:
         file_in_list = file.read().split("\n")
     file_in_set = set(file_in_list)
     compare_average_time = partial(average_runtime, "zwitterion", number_of_runs=1000,
-                                   function=is_inside_object)
+                                   function=is_inside_iterable)
     print_result = lambda start_message_word, iterable: print(f"{start_message_word} average = ",
                                                               compare_average_time(iterable))
     print_result("list", file_in_list)

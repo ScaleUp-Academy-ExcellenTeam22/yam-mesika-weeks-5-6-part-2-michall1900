@@ -6,7 +6,7 @@ from typing import Any, Iterable
 
 def average_run_time(runs_time: int) -> Callable[[Any], Any]:
     """
-    Decorator that Return the average running time while running function "runs_time" times.
+    Return the average running time while running function "runs_time" times.
     I used this site:
     https://www.pythontutorial.net/advanced-python/python-decorator-arguments/
     :param runs_time: Time's number you want to run the function.
@@ -33,9 +33,7 @@ def is_inside_iterable(item: Any, iterable: Iterable[Any]) -> bool:
     :param iterable: Any kind of an iterable.
     :return: True if it is, otherwise, false.
     """
-    if item in iterable:
-        return True
-    return False
+    return item in iterable
 
 
 def main_fast_and_reliable() -> None:

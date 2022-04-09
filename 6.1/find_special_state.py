@@ -17,9 +17,7 @@ def find_special_state(file_name: str) -> str:
     with open(file_name) as file:
         for line in file:
             for row in keyboard_rows:
-                line_in_set = set(line)
-                line_in_set.discard("\n")
-                if line_in_set & row == line_in_set:
+                if set(line[:-1]).issubset(row):
                     return line
 
 

@@ -5,6 +5,8 @@ from typing import Any, Iterable
 def generator_interleave(*iterables: Iterable) -> Any:
     """
     Return items one by one in the order they should be if we will interleave them.
+    For example, if the iterables are: 'abc', [1, 2, 3, 4, 5], ('!', '@'), {'name': 'Shalom'}
+    the value will return at this order: 'a', 1, '!', 'name', 'b', 2, '@', c, 3, 4, 5.
     :param iterables: Iterables item as many as you want.
     :return: Elements in each iterable in the order they should be if we interleave them.
     """
@@ -23,6 +25,8 @@ def interleave(*iterables: Iterable) -> list:
     """
     Return a list of connected vessels (first cell of each iterable obj,
     then second and so on).
+    For example, if the iterables are: 'abc', [1, 2, 3, 4, 5], ('!', '@'), {'name': 'Shalom'}
+    the return value will be ['a', 1, '!', 'name', 'b', 2, '@', c, 3, 4, 5].
     Got help from
     https://stackoverflow.com/questions/48199961/how-to-interleave-two-lists-of-different-length
     :param iterables: Iterables objects.

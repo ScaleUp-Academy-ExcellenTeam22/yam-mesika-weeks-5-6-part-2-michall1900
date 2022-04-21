@@ -17,9 +17,9 @@ def average_run_time(runs_time: int) -> Callable[[Any], Any]:
         def wrapper(*args: Any, **kwargs: Any) -> float:
             sum_time = 0
             for iterate in range(runs_time):
-                start = timeit.default_timer()
+                starting_time = timeit.default_timer()
                 function(*args, **kwargs)
-                sum_time += timeit.default_timer()-start
+                sum_time += timeit.default_timer() - starting_time
             return sum_time if runs_time > 0 else -1
         return wrapper
     return decorator
